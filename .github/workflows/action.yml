@@ -1,4 +1,4 @@
-name: Ejecutar Selenium y Enviar Reporte
+name: Ejecutar scraper y enviar reporte
 
 on:
   schedule:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v6
 
-      - name: Configurar Python
+      - name: Configurar python
         uses: actions/setup-python@v6.2.0
         with:
           python-version: '3.14'
@@ -23,7 +23,7 @@ jobs:
           pip install playwright pandas openpyxl playwright-stealth
           playwright install chromium
 
-      - name: Ejecutar Script de Selenium
+      - name: Ejecutar python
         id: ejecucion
         run: |
           python Scraper_main_Carrefour.py
@@ -31,7 +31,7 @@ jobs:
           cat texto_resultado.txt >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Enviar Correo
+      - name: Enviar correo
         uses: dawidd6/action-send-mail@v8
         with:
           server_address: smtp.gmail.com
@@ -42,7 +42,7 @@ jobs:
           to: julio_antonio_soto_vicente@carrefour.com
           from: Automatizaciones públicas Carrefour
           body: |
-            ¡Hola! 🤖 Soy el bot de analizar las URLs de https://www.carrefour.es.
+            ¡Hola! 🤖 Soy el bot de analizar las URLs de la main https://www.carrefour.es
 
             Acabo de terminar la ejecución de hoy. Resumen: ${{ steps.ejecucion.outputs.cuerpo_mail }}
 
