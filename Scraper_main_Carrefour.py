@@ -18,8 +18,14 @@ async def main():
 
         print("Webdriver operativo. Accediendo a https://www.carrefour.es...")
 
-        await page.goto("https://www.carrefour.es/")
+        try:
+            async with page.expect_navigation(url=pattern, timeout=15000) as resp:
+                await page.goto("https://www.carrefour.es/", wait_until="networkidle")
+        except TimeoutError:
+            print("Bloqueado")
 
+        print(page.url)
+        
         # Usamos JavaScript para obtener todos los href de una vez.
         # Esto evita el error de "locator.get_attribute" al iterar.
         # O al menos debería...

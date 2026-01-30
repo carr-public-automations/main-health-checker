@@ -22,11 +22,10 @@ jobs:
         run: |
           pip install playwright pandas openpyxl
           playwright install chromium
-          # Aquí instalas lo que necesites para tu script
 
       - name: Ejecutar Script de Selenium
+        id: ejecucion
         run: python Scraper_main_Carrefour.py > resultado.txt 
-        # Redirigimos la salida a un archivo para enviarla luego
 
       - name: Enviar Correo
         uses: dawidd6/action-send-mail@v8
@@ -35,10 +34,10 @@ jobs:
           server_port: 465
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "Reporte Diario Selenium"
-          to: julio_antonio_soto_vicente@carrefour.com # El correo donde quieres recibirlo
-          from: GitHub Actions Bot
+          subject: "Reporte diario main Carrefour"
+          to: julio_antonio_soto_vicente@carrefour.com
+          from: Automatizaciones públicas Carrefour
           body: |
-            La ejecución de Selenium ha finalizado. 
+            La ejecución del bot de analizar las URLs de https://www.carrefour.es ha finalizado. 
             Resultado: ${{ steps.ejecutar.outputs.resultado }}
-          attachments: resultado.txt # Opcional: enviar el log como adjunto
+          attachments: resultado.txt
