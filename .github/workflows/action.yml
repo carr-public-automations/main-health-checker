@@ -43,5 +43,5 @@ jobs:
           from: Automatizaciones públicas Carrefour
           body: |
             La ejecución del bot de analizar las URLs de https://www.carrefour.es ha finalizado. 
-            Resultado: ${{ steps.ejecucion.outputs.cuerpo_mail }}
+            Resumen: ${{ steps.ejecucion.outputs.cuerpo_mail }}
           attachments: Resultados scraping main carrefour.xlsx
