@@ -20,7 +20,7 @@ jobs:
 
       - name: Instalar dependencias
         run: |
-          pip install playwright pandas openpyxl
+          pip install playwright pandas openpyxl playwright-stealth
           playwright install chromium
 
       - name: Ejecutar Script de Selenium
