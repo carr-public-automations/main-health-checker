@@ -14,7 +14,7 @@ async def main():
 
         print("Arrancando webdriver de Chromium para simular navegación...")
         
-        browser = await p.chromium.launch(headless=False)
+        browser = await p.chromium.launch(headless=True)
 
         context = await browser.new_context(
             viewport={'width': 1920, 'height': 1080},
