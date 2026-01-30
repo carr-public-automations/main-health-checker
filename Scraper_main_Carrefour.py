@@ -4,13 +4,13 @@ import os
 
 import pandas as pd
 from playwright.async_api import async_playwright
-from playwright_stealth import stealth_async
+from playwright_stealth import Stealth
 
 async def main():
 
     pares_urls_respuesta = []
 
-    async with async_playwright() as p:
+    async with Stealth().use_async(async_playwright()) as p:
 
         print("Arrancando webdriver de Chromium para simular navegación...")
         
@@ -22,8 +22,6 @@ async def main():
         )
 
         page = await browser.new_page()
-
-        await stealth_async(page)
 
         print("Webdriver operativo. Accediendo a https://www.carrefour.es...")
 
