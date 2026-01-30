@@ -64,5 +64,4 @@ async def main():
     #_ = input("\nPulsa Enter para salir del programa")
 
 
-if __name__ == "__main__":
-    asyncio.run(main())
+asyncio.run(main())
