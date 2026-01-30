@@ -1,0 +1,1 @@
+pyinstaller --onefile --hidden-import openpyxl .\Scraper_main_Carrefour.py
