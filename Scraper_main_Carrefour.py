@@ -98,5 +98,5 @@ async def main():
     print(f"\n¡Terminado! El archivo {os.path.abspath(nombre_archivo)} tiene los resultados.")
     #_ = input("\nPulsa Enter para salir del programa")
 
-
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())

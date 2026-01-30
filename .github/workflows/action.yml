@@ -42,6 +42,11 @@ jobs:
           to: julio_antonio_soto_vicente@carrefour.com
           from: Automatizaciones públicas Carrefour
           body: |
-            La ejecución del bot de analizar las URLs de https://www.carrefour.es ha finalizado. 
-            Resumen: ${{ steps.ejecucion.outputs.cuerpo_mail }}
+            ¡Hola! 🤖 Soy el bot de analizar las URLs de https://www.carrefour.es.
+
+            Acabo de terminar la ejecución de hoy. Resumen: ${{ steps.ejecucion.outputs.cuerpo_mail }}
+
+            Puedes ver el Excel con todas las URLs comprobadas adjunto a este correo.
+
+            ¡Hasta la próxima! 😊
           attachments: Resultados scraping main carrefour.xlsx
