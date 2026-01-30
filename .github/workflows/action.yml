@@ -25,7 +25,11 @@ jobs:
 
       - name: Ejecutar Script de Selenium
         id: ejecucion
-        run: python Scraper_main_Carrefour.py
+        run: |
+          python Scraper_main_Carrefour.py
+          echo "cuerpo_mail<<EOF" >> $GITHUB_OUTPUT
+          cat texto_resultado.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Enviar Correo
         uses: dawidd6/action-send-mail@v8
@@ -39,5 +43,5 @@ jobs:
           from: Automatizaciones públicas Carrefour
           body: |
             La ejecución del bot de analizar las URLs de https://www.carrefour.es ha finalizado. 
-            Resultado: ${{ steps.ejecutar.outputs.resultado }}
+            Resultado: ${{ steps.ejecucion.outputs.cuerpo_mail }}
           attachments: Resultados scraping main carrefour.xlsx

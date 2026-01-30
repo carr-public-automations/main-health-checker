@@ -85,6 +85,16 @@ async def main():
     nombre_archivo = f"Resultados scraping main carrefour.xlsx"
     tabla_resultados.to_excel(nombre_archivo, index=False)
 
+    distintos_de_200 = tabla_resultados[tabla_resultados["Respuesta"] != 200]
+
+    texto_resultado = "Todas las URLs bien, excepto:\n"
+
+    for _, fila in distintos_de_200.iterrows():
+        texto_resultado += f"- Texto clickable: {fila["Texto clickable"]}; URL: {fila["URL"]}; Respuesta: {fila["Respuesta"]}\n"
+
+    with open("texto_resultado.txt", "w") as archivo_salida:
+        archivo_salida.write(texto_resultado)
+
     print(f"\n¡Terminado! El archivo {os.path.abspath(nombre_archivo)} tiene los resultados.")
     #_ = input("\nPulsa Enter para salir del programa")
 
