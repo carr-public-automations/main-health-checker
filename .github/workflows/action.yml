@@ -19,7 +19,7 @@ jobs:
 
       - name: Instalar dependencias
         run: |
-          pip install playwright pandas
+          pip install playwright pandas openpyxl
           playwright install chromium
           # Aquí instalas lo que necesites para tu script
 
