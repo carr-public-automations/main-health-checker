@@ -61,7 +61,7 @@ async def main():
     tabla_resultados.to_excel(nombre_archivo, index=False)
 
     print(f"\n¡Terminado! El archivo {os.path.abspath(nombre_archivo)} tiene los resultados.")
-    _ = input("\nPulsa Enter para salir del programa")
+    #_ = input("\nPulsa Enter para salir del programa")
 
 
 if __name__ == "__main__":
