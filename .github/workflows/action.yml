@@ -39,7 +39,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Reporte diario main Carrefour"
-          to: julio_antonio_soto_vicente@carrefour.com
+          to: alina_paula_danci@carrefour.com,alicia_alonso_soldevilla@carrefour.com,julio_antonio_soto_vicente@carrefour.com
           from: Automatizaciones públicas Carrefour
           body: |
             ¡Hola! 🤖 Soy el bot de analizar las URLs de la main https://www.carrefour.es
