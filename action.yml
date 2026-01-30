@@ -1,0 +1,43 @@
+name: Ejecutar Selenium y Enviar Reporte
+
+on:
+  schedule:
+    - cron: '0 9 * * *' 
+  workflow_dispatch:      # Permite ejecutarlo manualmente para probar
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v6
+
+      - name: Configurar Python
+        uses: actions/setup-python@v6.2.0
+        with:
+          python-version: '3.14'
+
+      - name: Instalar dependencias
+        run: |
+          pip install playwright pandas
+          playwright install chromium
+          # Aquí instalas lo que necesites para tu script
+
+      - name: Ejecutar Script de Selenium
+        run: python Scraper_main_Carrefour.py > resultado.txt 
+        # Redirigimos la salida a un archivo para enviarla luego
+
+      - name: Enviar Correo
+        uses: dawidd6/action-send-mail@v8
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Reporte Diario Selenium"
+          to: julio_antonio_soto_vicente@carrefour.es # El correo donde quieres recibirlo
+          from: GitHub Actions Bot
+          body: |
+            La ejecución de Selenium ha finalizado. 
+            Resultado: ${{ steps.ejecutar.outputs.resultado }}
+          attachments: resultado.txt # Opcional: enviar el log como adjunto
