@@ -20,7 +20,7 @@ jobs:
       - name: Instalar dependencias
         run: |
           pip install playwright pandas
-          playwright install
+          playwright install chromium
           # Aquí instalas lo que necesites para tu script
 
       - name: Ejecutar Script de Selenium
