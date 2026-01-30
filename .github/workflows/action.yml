@@ -25,7 +25,7 @@ jobs:
 
       - name: Ejecutar Script de Selenium
         id: ejecucion
-        run: python Scraper_main_Carrefour.py > resultado.txt 
+        run: python Scraper_main_Carrefour.py
 
       - name: Enviar Correo
         uses: dawidd6/action-send-mail@v8
