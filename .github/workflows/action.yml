@@ -40,4 +40,4 @@ jobs:
           body: |
             La ejecución del bot de analizar las URLs de https://www.carrefour.es ha finalizado. 
             Resultado: ${{ steps.ejecutar.outputs.resultado }}
-          attachments: resultado.txt
+          attachments: Resultados scraping main carrefour.xlsx

@@ -21,7 +21,7 @@ async def main():
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         )
 
-        page = await browser.new_page()
+        page = await context.new_page()
 
         print("Webdriver operativo. Accediendo a https://www.carrefour.es...")
 
@@ -38,8 +38,6 @@ async def main():
             
             if "carrefour.es" in page.url:
                 print(f"¡Éxito! URL actual: {page.url}")
-                # Aquí tu lógica de empleado:
-                # await page.click('text="Mi cuenta"')
             
         except Exception as e:
             print(f"Error o timeout: Posible bloqueo persistente. {e}")
@@ -83,7 +81,8 @@ async def main():
                                      "Respuesta": [respuesta for texto, url, respuesta in pares_urls_respuesta]})
 
     fecha_y_hora = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-    nombre_archivo = f"{fecha_y_hora} Resultados scraping main carrefour.xlsx"
+    #nombre_archivo = f"{fecha_y_hora} Resultados scraping main carrefour.xlsx"
+    nombre_archivo = f"Resultados scraping main carrefour.xlsx"
     tabla_resultados.to_excel(nombre_archivo, index=False)
 
     print(f"\n¡Terminado! El archivo {os.path.abspath(nombre_archivo)} tiene los resultados.")
